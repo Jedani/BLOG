@@ -21,6 +21,8 @@ app.get("/blogs", (req, res) => {
 	res.render("blogs");
 });
 
+app.use(express.static("public"));
+
 app.use((req, res) => {
 	res.status(404).render("404");
 });
