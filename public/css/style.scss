@@ -72,13 +72,14 @@ select {
 		scroll-behavior: auto !important;
 	}
 }
-body {
-	background: black;
-	color: white;
-}
+
+// this will be for the variiables that will be used
+
+$primary-clr: #1a73e8;
+$input-clr: #80868b;
+$border-clr: #dadce0;
 
 .container {
-	outline: solid blue;
 	position: relative;
 	min-width: 25em;
 	height: fit-content;
@@ -90,27 +91,88 @@ body {
 	display: flex;
 	flex-direction: column;
 
-	.image {
-		margin-inline: auto;
-		outline: solid red;
-		width: 60px;
-		height: 60px;
-		margin-top: 30px;
-		margin-bottom: 20px;
-		border-radius: 50%;
-	}
-
 	.information {
-		outline: solid yellow;
 		height: fit-content;
 		width: 100%;
-		display: flex;
-		flex-direction: column;
 
-		input {
-			margin: 10px 0;
+		.form {
+			width: 360px;
+			padding: 3rem 2rem;
+			border-radius: 1rem;
+			box-shadow: 0 10px 25px rgba($color: rgb(92, 99, 105), $alpha: 0.2);
+		}
+
+		.form_title {
+			font-weight: 400;
+			margin-bottom: 3rem;
+		}
+
+		.form_div {
+			position: relative;
+			height: 50px;
+			margin-bottom: 1.5rem;
+		}
+
+		.form_input {
+			position: absolute;
+			top: 0;
+			left: 0;
 			width: 100%;
 			height: 100%;
+			border: 1px solid $border-clr;
+			border-radius: 0.5rem;
+			outline: none;
+			padding: 1rem;
+			background: none;
+			z-index: 1;
+
+			&:focus {
+				border: 1.5px solid $primary-clr;
+			}
+		}
+
+		.form_label {
+			position: absolute;
+			left: 1rem;
+			top: 1rem;
+			padding: 0 0.25rem;
+			background-color: #fff;
+			color: $input-clr;
+			transition: 0.3s;
+		}
+
+		.form_button {
+			display: block;
+			margin-left: auto;
+			padding: 0.75rem 2rem;
+			cursor: pointer;
+			border-radius: 0.5rem;
+			color: #fff;
+			background-color: $primary-clr;
+			border: none;
+			outline: none;
+			transition: 0.3s;
+
+			&:hover {
+				box-shadow: 0 10px 36px rgba($color: rgb(0, 0, 0), $alpha: 0.15);
+			}
+		}
+
+		.form_input:focus + .form_label {
+			top: -0.5rem;
+			left: 0.8rem;
+			color: $primary-clr;
+			font-size: smaller;
+			font-weight: 400;
+			z-index: 10;
+		}
+
+		.form_input:not(:placeholder-shown).form_input:not(:focus) + .form_label {
+			top: -0.5rem;
+			left: 0.8rem;
+			font-size: smaller;
+			font-weight: 400;
+			z-index: 10;
 		}
 	}
 }
