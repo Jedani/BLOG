@@ -85,7 +85,7 @@ select {
   height: fit-content;
   float: right;
   margin-inline: 150px;
-  top: 50%;
+  top: 45%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   border-radius: 20px;
