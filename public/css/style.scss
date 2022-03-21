@@ -76,10 +76,10 @@ select {
 .container {
 	outline: solid blue;
 	position: relative;
-	width: 200px;
+	width: 400px;
 	height: 300px;
 	float: right;
-	margin-inline: 50px;
+	margin-inline: 150px;
 	top: 50%;
 	transform: translateY(-50%);
 	border-radius: 20px;
@@ -97,5 +97,7 @@ select {
 	}
 
 	.information {
+		outline: solid yellow;
+		height: fit-content;
 	}
 }

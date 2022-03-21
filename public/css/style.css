@@ -80,10 +80,10 @@ select {
 .container {
   outline: solid blue;
   position: relative;
-  width: 200px;
+  width: 400px;
   height: 300px;
   float: right;
-  margin-inline: 50px;
+  margin-inline: 150px;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -104,4 +104,10 @@ select {
   margin-top: 30px;
   margin-bottom: 10px;
   border-radius: 50%;
+}
+.container .information {
+  outline: solid yellow;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }/*# sourceMappingURL=style.css.map */

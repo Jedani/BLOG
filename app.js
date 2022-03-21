@@ -5,6 +5,7 @@ const port = "3020";
 
 app.set("view engine", "ejs");
 
+app.use(express.static("public"));
 app.get("/", (req, res) => {
 	res.render("index");
 });
@@ -20,8 +21,6 @@ app.get("/login", (req, res) => {
 app.get("/blogs", (req, res) => {
 	res.render("blogs");
 });
-
-app.use(express.static("public"));
 
 app.use((req, res) => {
 	res.status(404).render("404");
