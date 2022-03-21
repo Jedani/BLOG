@@ -6,11 +6,21 @@
 			<div class="image"></div>
 			<div class="information">
 				<form action="">
-					<label for="fname">Username</label>
-					<input type="text" id="fname" name="fname" />
+					<input
+						type="text"
+						required
+						autocomplete="off"
+						id="fname"
+						name="fname"
+					/>
+					<label for="Uname" class="username"
+						><span class="content-name">Username</span>
+					</label>
 					<br />
-					<label for="lname">Password</label>
-					<input type="password" id="pass" name="password" />
+					<input type="password" id="pass" required name="password" />
+					<label for="password" class="password"
+						><span class="password">Password</span>
+					</label>
 					<br />
 					<input type="checkbox" name="remember" id="rem" />
 				</form>
