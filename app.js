@@ -18,7 +18,7 @@ let connection = mysql.createConnection({
 let blogs = [];
 
 connection.query(
-	"SELECT full_name FROM users LIMIT 10",
+	"SELECT full_name FROM users LIMIT 9",
 	(error, results, field) => {
 		if (error) throw error;
 		for (i = 0; i < results.length; i++) {
@@ -27,7 +27,9 @@ connection.query(
 	},
 );
 
-connection.end;
+connection.end((err) => {
+	console.log("connection is ended");
+});
 
 app.get("/", (req, res) => {
 	res.render("index", { title: "Home", blogs });
