@@ -8,11 +8,11 @@ let connection = mysql.createPool({
 	port: "3306",
 });
 
-let blogs = [];
+let blogs = {};
 
 blogs.all = () => {
 	return new Promise((resolve, reject) => {
-		connection.query("SELECT username FROM users", (error, results, field) => {
+		connection.query("SELECT * FROM users", (error, results, field) => {
 			if (error) {
 				return reject(err);
 			}

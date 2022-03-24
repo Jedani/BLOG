@@ -1,5 +1,5 @@
 const db = require("../model/database");
-//about_page, delete_blog
+// delete_blog
 
 const blogs_page = async (req, res) => {
 	let blogs = [];
@@ -38,10 +38,16 @@ const sign_up = (req, res) => {
 const create_page = (req, res) => {
 	res.render("blogs/create");
 };
+
+const about = (req, res) => {
+	res.render("site_defaults/about");
+};
+
 module.exports = {
 	blog_index,
 	blogs_page,
 	login_page,
 	sign_up,
 	create_page,
+	about,
 };
