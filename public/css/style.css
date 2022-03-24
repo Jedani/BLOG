@@ -77,6 +77,10 @@ select {
     scroll-behavior: auto !important;
   }
 }
+body {
+  background-color: black;
+}
+
 .container {
   position: relative;
   min-width: 25em;

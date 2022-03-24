@@ -1,5 +1,6 @@
 <html lang="en">
-	<%- include('./partials/head.ejs') %>
+	<%- include("../partials/head.ejs") %>
+
 	<body>
 		<% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
 		<h1><%= blog %></h1>
