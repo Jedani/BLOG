@@ -1,18 +1,9 @@
 const express = require("express");
-const db = require("../model/database");
+const blogController = require("../controllers/controller");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-	try {
-		let blogs = await db.all();
-		console.log(blogs[0].username);
-		res.render("index", { title: "Home", blogs });
-	} catch (e) {
-		console.log(e);
-		res.sendStatus(500);
-	}
-});
+router.get("/", blogController.blog_index);
 
 router.get("/signup", (req, res) => {
 	res.render("signup");
