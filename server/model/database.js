@@ -1,24 +1,24 @@
 const mysql = require("mysql");
 
-let connection = mysql.createConnection({
+let connection = mysql.createPool({
 	host: "localhost",
 	user: "fich",
 	password: "forever",
-	database: "join_us",
+	database: "blog_data",
+	port: "3306",
 });
 
 let blogs = [];
 
-connection.query(
-	"SELECT full_name FROM users LIMIT 9",
-	(error, results, field) => {
-		if (error) throw error;
-		for (i = 0; i < results.length; i++) {
-			blogs.push(results[i].full_name);
-		}
-	},
-);
+blogs.all = () => {
+	return new Promise((resolve, reject) => {
+		connection.query("SELECT username FROM users", (error, results, field) => {
+			if (error) {
+				return reject(err);
+			}
+			return resolve(results);
+		});
+	});
+};
 
-connection.end((err) => {
-	console.log("connection is ended");
-});
+module.exports = blogs;

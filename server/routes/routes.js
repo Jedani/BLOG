@@ -1,20 +1,28 @@
 const express = require("express");
+const db = require("../model/database");
 
 const router = express.Router();
 
-router.app.get("/", (req, res) => {
-	res.render("index", { title: "Home", blogs });
+router.get("/", async (req, res) => {
+	try {
+		let blogs = await db.all();
+		console.log(blogs[0].username);
+		res.render("index", { title: "Home", blogs });
+	} catch (e) {
+		console.log(e);
+		res.sendStatus(500);
+	}
 });
 
-router.app.get("/signup", (req, res) => {
+router.get("/signup", (req, res) => {
 	res.render("signup");
 });
 
-router.app.get("/login", (req, res) => {
+router.get("/login", (req, res) => {
 	res.render("login");
 });
 
-router.app.get("/blogs", (req, res) => {
+router.get("/blogs", (req, res) => {
 	res.render("blogs");
 });
 
