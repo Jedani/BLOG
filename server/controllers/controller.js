@@ -1,5 +1,5 @@
 const db = require("../model/database");
-// blogs_page, blog_index, login_page, create_page, about_page, sign_up, delete_blog
+//about_page, delete_blog
 
 const blogs_page = async (req, res) => {
 	let blogs = [];
@@ -28,16 +28,20 @@ const blog_index = async (req, res) => {
 };
 
 const login_page = (req, res) => {
-	res.render("login");
+	res.render("credentials/login");
 };
 
 const sign_up = (req, res) => {
-	res.render("signup");
+	res.render("credentials/signup");
 };
 
+const create_page = (req, res) => {
+	res.render("blogs/create");
+};
 module.exports = {
 	blog_index,
 	blogs_page,
 	login_page,
 	sign_up,
+	create_page,
 };

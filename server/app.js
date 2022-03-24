@@ -12,7 +12,7 @@ app.use(express.static("public"));
 app.use("/", routes);
 
 app.use((req, res) => {
-	res.status(404).render("404");
+	res.status(404).render("site_defaults/404");
 });
 
 app.listen(port, () => {
