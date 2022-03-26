@@ -1,7 +1,12 @@
 const Post = require("../model/Post");
 
 const getAllBlogs = async (req, res) => {
-	res.send("get me");
+	try {
+		const [blogs, _] = await Post.findAll();
+		res.render("blogs/index", { title: "All blogs", blogs });
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 const postBlog = async (req, res) => {
@@ -10,16 +15,18 @@ const postBlog = async (req, res) => {
 		let post = new Post(blog, snippet, title);
 
 		post = await post.save();
-		console.log(post);
 
-		res.send("post me");
+		res.redirect("/blogs/blogs");
 	} catch (error) {
 		console.log(error);
 	}
 };
 
 const getById = async (req, res) => {
-	res.send("get me by id");
+	try {
+		let postId = req.params.id;
+		let [post, _] = await Post.findById(postId);
+	} catch (error) {}
 };
 
 module.exports = {
