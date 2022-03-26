@@ -3,11 +3,8 @@ const blogController = require("../controllers/controller");
 
 const router = express.Router();
 
-router.get("/", blogController.blog_index);
-router.get("/blogs", blogController.blogs_page);
-router.get("/login", blogController.login_page);
-router.get("/signup", blogController.sign_up);
-router.get("/create", blogController.create_page);
-router.get("/about", blogController.about);
+router.route("/").get(blogController.getAllBlogs).post(blogController.postBlog);
+
+router.route("/:id").get(blogController.getById);
 
 module.exports = router;

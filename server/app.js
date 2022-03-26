@@ -1,13 +1,15 @@
+const { urlencoded } = require("express");
 const express = require("express");
 const routes = require("./routes/routes");
 const app = express();
 
-const port = process.env.PORT || "3020";
+const PORT = process.env.PORT || "3000";
 
 app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.static("public"));
+app.use(urlencoded({ extended: true }));
 
 app.use("/", routes);
 
@@ -15,6 +17,7 @@ app.use((req, res) => {
 	res.status(404).render("site_defaults/404");
 });
 
-app.listen(port, () => {
-	console.log(`listening on port ${port}`);
+app.listen(PORT, (err) => {
+	if (err) throw err;
+	console.log(`listening on PORT: ${PORT}`);
 });
