@@ -3,10 +3,13 @@ const blogController = require("../controllers/controller");
 
 const router = express.Router();
 
-router.route("/").get(blogController.getAllBlogs);
-router.post("/blogs", (req, res) => {
-	post(blogController.postBlog);
+router.get("/", (req, res) => {
+	res.redirect("/blogs");
 });
+router.get("/blogs", blogController.getAllBlogs);
+router.get("/blogs/create", blogController.create_page);
+
+router.post("/blogs", blogController.postBlog);
 
 router.route("/:id").get(blogController.getById);
 

@@ -9,6 +9,10 @@ const getAllBlogs = async (req, res) => {
 	}
 };
 
+const create_page = (req, res) => {
+	res.render("blogs/create", { title: "create a blog" });
+};
+
 const postBlog = async (req, res) => {
 	try {
 		let { title, blog, snippet } = req.body;
@@ -16,7 +20,7 @@ const postBlog = async (req, res) => {
 
 		post = await post.save();
 
-		res.redirect("/blogs/blogs");
+		res.redirect("/blogs");
 	} catch (error) {
 		console.log(error);
 	}
@@ -33,4 +37,5 @@ module.exports = {
 	getAllBlogs,
 	postBlog,
 	getById,
+	create_page,
 };
