@@ -35,9 +35,20 @@ const getById = async (req, res) => {
 	} catch (error) {}
 };
 
+const deleteById = async (req, res) => {
+	try {
+		let delId = req.params.id;
+		let del = await Post.delete(delId);
+		res.redirect("blogs/index");
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 module.exports = {
 	getAllBlogs,
 	postBlog,
 	getById,
 	create_page,
+	deleteById,
 };
