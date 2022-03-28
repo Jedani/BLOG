@@ -30,6 +30,8 @@ const getById = async (req, res) => {
 	try {
 		let postId = req.params.id;
 		let [post, _] = await Post.findById(postId);
+		let result = post[0];
+		res.render("blogs/details", { blog: result, title: "details of blog" });
 	} catch (error) {}
 };
 

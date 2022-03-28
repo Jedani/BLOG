@@ -16,12 +16,12 @@ class Post {
 	}
 
 	static findAll() {
-		let sql = `SELECT title, snippet, blog FROM blogs`;
+		let sql = `SELECT id, title, snippet, blog FROM blogs`;
 		return db.execute(sql);
 	}
 
 	static findById(id) {
-		let sql = `SELECT * FROM blogs WHERE id=${id}`;
+		let sql = `SELECT id, title, blog FROM blogs WHERE id = ${id}`;
 
 		return db.execute(sql);
 	}
