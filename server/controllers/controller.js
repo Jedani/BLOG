@@ -32,13 +32,16 @@ const getById = async (req, res) => {
 		let [post, _] = await Post.findById(postId);
 		let result = post[0];
 		res.render("blogs/details", { blog: result, title: "details of blog" });
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 };
 
-const deleteById = async (req, res) => {
+const deleteId = async (req, res) => {
 	try {
 		let delId = req.params.id;
-		let del = await Post.delete(delId);
+
+		let del = await Post.deleteById(delId);
 		res.json({ redirect: "/blogs" });
 	} catch (error) {
 		console.log(error);
@@ -50,5 +53,5 @@ module.exports = {
 	postBlog,
 	getById,
 	create_page,
-	deleteById,
+	deleteId,
 };
