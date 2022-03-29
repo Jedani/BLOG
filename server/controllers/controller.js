@@ -13,6 +13,10 @@ const create_page = (req, res) => {
 	res.render("blogs/create", { title: "create a blog" });
 };
 
+const about_page = (req, res) => {
+	res.render("site_defaults/about", { title: "about page" });
+};
+
 const postBlog = async (req, res) => {
 	try {
 		let { title, blog, snippet } = req.body;
@@ -54,4 +58,5 @@ module.exports = {
 	getById,
 	create_page,
 	deleteId,
+	about_page,
 };

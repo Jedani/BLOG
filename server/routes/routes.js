@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 });
 router.get("/blogs", blogController.getAllBlogs);
 router.get("/blogs/create", blogController.create_page);
+router.get("/blogs/about", blogController.about_page);
 
 router.post("/blogs", blogController.postBlog);
 
