@@ -26,7 +26,7 @@ class Post {
 		return db.execute(sql);
 	}
 
-	delete(id) {
+	static delete(id) {
 		let sql = `DELETE FROM blogs WHERE id = ${id}`;
 
 		return db.execute(sql);

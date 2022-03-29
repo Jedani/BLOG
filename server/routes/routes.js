@@ -11,6 +11,7 @@ router.get("/blogs/create", blogController.create_page);
 
 router.post("/blogs", blogController.postBlog);
 
-router.route("/blogs/:id").get(blogController.getById);
-router.route("/blogs/:id").get(blogController.getById);
+router.get("/blogs/:id", blogController.getById);
+router.delete("/blogs/:id", blogController.deleteById);
+
 module.exports = router;

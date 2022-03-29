@@ -39,7 +39,7 @@ const deleteById = async (req, res) => {
 	try {
 		let delId = req.params.id;
 		let del = await Post.delete(delId);
-		res.redirect("blogs/index");
+		res.json({ redirect: "/blogs" });
 	} catch (error) {
 		console.log(error);
 	}
