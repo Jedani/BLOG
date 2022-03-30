@@ -21,9 +21,7 @@ const postBlog = async (req, res) => {
 	try {
 		let { title, blog, snippet } = req.body;
 		let post = new Post(blog, snippet, title);
-
 		post = await post.save();
-
 		res.redirect("/blogs");
 	} catch (error) {
 		console.log(error);
@@ -52,6 +50,18 @@ const deleteId = async (req, res) => {
 	}
 };
 
+const updateId = async (req, res) => {
+	try {
+		let upId = req.params.id;
+		let { title, blog, snippet } = req.body;
+		let post = new Post(blog, snippet, title);
+
+		let update = await Post.updateById(upId);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 module.exports = {
 	getAllBlogs,
 	postBlog,
@@ -59,4 +69,5 @@ module.exports = {
 	create_page,
 	deleteId,
 	about_page,
+	updateId,
 };

@@ -2,15 +2,17 @@ const db = require("../config/database");
 
 class Post {
 	constructor(blog, snippet, title) {
-		(this.title = title), (this.blog = blog), (this.snippet = snippet);
+		(this.snippet = snippet), (this.blog = blog), (this.title = title);
 	}
 
 	save() {
 		let sql = `
         INSERT INTO blogs(blog_id, blog, snippet, title)
-                     VALUES (${1}, '${this.blog}', '${this.snippet}', 
-                        '${this.title}')
-                        `;
+                     VALUES (${1},
+						'${this.blog}',
+						'${this.snippet}', 
+                        '${this.title}'
+						)`;
 
 		return db.execute(sql);
 	}
@@ -28,6 +30,16 @@ class Post {
 
 	static deleteById(id) {
 		let sql = `DELETE FROM blogs WHERE id = ${id}`;
+
+		return db.execute(sql);
+	}
+
+	static updateById(id) {
+		let sql = `UPDATE blogs
+					SET blog = '${this.blog}',
+						snippet = '${this.snippet},
+						title = '${this.title}'
+					WHERE id = ${id}'`;
 
 		return db.execute(sql);
 	}

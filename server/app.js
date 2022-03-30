@@ -1,4 +1,3 @@
-const { urlencoded } = require("express");
 const express = require("express");
 const routes = require("./routes/routes");
 const app = express();
@@ -9,7 +8,7 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use(urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", routes);
 

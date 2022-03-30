@@ -23,12 +23,16 @@
 		trash.addEventListener("click", (e) => {
 			const endpoint = `/blogs/${trash.dataset.doc}`;
 
-			fetch(endpoint, {
-				method: "DELETE",
-			})
-				.then((response) => response.json())
-				.then((res) => (window.location.href = res.redirect))
-				.catch((err) => console.log(err));
+			deleteBtn().catch((err) => console.log(err));
+
+			async function deleteBtn() {
+				const response = await fetch(endpoint, {
+					method: "DELETE",
+				});
+
+				const res = await response.json();
+				window.location.href = await res.redirect;
+			}
 		});
 	</script>
 </html>
