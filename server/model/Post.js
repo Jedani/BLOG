@@ -37,7 +37,6 @@ class Post {
 	static updateById(id) {
 		let sql = `UPDATE blogs
 					SET blog = '${this.blog}',
-						snippet = '${this.snippet},
 						title = '${this.title}'
 					WHERE id = ${id}'`;
 

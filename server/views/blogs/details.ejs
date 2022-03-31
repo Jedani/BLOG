@@ -1,5 +1,8 @@
 <html lang="en">
-	<%- include("../partials/head.ejs") %>
+	<head>
+		<%- include("../partials/head.ejs") %>
+		<script src="/js/details.js" defer></script>
+	</head>
 
 	<body>
 		<%- include("../partials/nav.ejs") %>
@@ -9,30 +12,15 @@
 			<div class="content">
 				<p><%= blog.blog %></p>
 			</div>
+			<a class="edit" data-doc="<%= blog.id %>">
+				<img src="/assets/icon-edit.svg" alt="edit icon" />
+			</a>
 			<a class="delete" data-doc="<%= blog.id %>">
 				<img src="/assets/icon-delete.svg" alt="delete icon" />
 			</a>
+			<button class="editBtn" type="submit">SEND</button>
 		</div>
 
 		<%- include("../partials/footer.ejs") %>
 	</body>
-
-	<script>
-		const trash = document.querySelector(".delete");
-
-		trash.addEventListener("click", (e) => {
-			const endpoint = `/blogs/${trash.dataset.doc}`;
-
-			deleteBtn().catch((err) => console.log(err));
-
-			async function deleteBtn() {
-				const response = await fetch(endpoint, {
-					method: "DELETE",
-				});
-
-				const res = await response.json();
-				window.location.href = await res.redirect;
-			}
-		});
-	</script>
 </html>

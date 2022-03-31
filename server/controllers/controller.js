@@ -19,8 +19,8 @@ const about_page = (req, res) => {
 
 const postBlog = async (req, res) => {
 	try {
-		let { title, blog, snippet } = req.body;
-		let post = new Post(blog, snippet, title);
+		let { title, blog } = req.body;
+		let post = new Post(blog, title);
 		post = await post.save();
 		res.redirect("/blogs");
 	} catch (error) {
@@ -35,7 +35,7 @@ const getById = async (req, res) => {
 		let result = post[0];
 		res.render("blogs/details", { blog: result, title: "details of blog" });
 	} catch (error) {
-		console.log(error);
+		res.sendStatus(404).render("site_defaults/404");
 	}
 };
 
@@ -56,7 +56,8 @@ const updateId = async (req, res) => {
 		let { title, blog, snippet } = req.body;
 		let post = new Post(blog, snippet, title);
 
-		let update = await Post.updateById(upId);
+		post = await Post.updateById(upId);
+		res.json({ redirect: `/blogs/${upId}` });
 	} catch (error) {
 		console.log(error);
 	}
