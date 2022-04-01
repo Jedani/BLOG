@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = require("./routes/routes");
+const auth = require("./routes/auth");
 const app = express();
 
 const PORT = process.env.PORT || "3000";
@@ -10,7 +11,7 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", routes);
+app.use("/", routes, auth);
 
 app.use((req, res) => {
 	res.status(404).render("site_defaults/404");
