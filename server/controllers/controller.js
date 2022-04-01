@@ -1,5 +1,13 @@
 const Post = require("../model/Post");
 
+const login = (req, res) => {
+	res.render("credentials/login", { title: "login page" });
+};
+
+const signUp = (req, res) => {
+	res.render("credentials/signup", { title: "signup page" });
+};
+
 const getAllBlogs = async (req, res) => {
 	try {
 		const [blogs, _] = await Post.findAll();
@@ -19,8 +27,8 @@ const about_page = (req, res) => {
 
 const postBlog = async (req, res) => {
 	try {
-		let { title, blog } = req.body;
-		let post = new Post(blog, title);
+		let { title, blog, snippet } = req.body;
+		let post = new Post(blog, title, snippet);
 		post = await post.save();
 		res.redirect("/blogs");
 	} catch (error) {
@@ -53,8 +61,8 @@ const deleteId = async (req, res) => {
 const updateId = async (req, res) => {
 	try {
 		let upId = req.params.id;
-		let { title, blog, snippet } = req.body;
-		let post = new Post(blog, snippet, title);
+		let { title, blog } = req.body;
+		let post = new Post(blog, title);
 
 		post = await Post.updateById(upId);
 		res.json({ redirect: `/blogs/${upId}` });
@@ -71,4 +79,6 @@ module.exports = {
 	deleteId,
 	about_page,
 	updateId,
+	login,
+	signUp,
 };

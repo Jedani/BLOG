@@ -8,9 +8,9 @@
 		<%- include("../partials/nav.ejs") %>
 
 		<div class="details content">
-			<h2><%= blog.title %></h2>
+			<h2 contenteditable="false" id="title"><%= blog.title %></h2>
 			<div class="content">
-				<p><%= blog.blog %></p>
+				<p contenteditable="false" id="blog"><%= blog.blog %></p>
 			</div>
 			<a class="edit" data-doc="<%= blog.id %>">
 				<img src="/assets/icon-edit.svg" alt="edit icon" />
@@ -18,7 +18,7 @@
 			<a class="delete" data-doc="<%= blog.id %>">
 				<img src="/assets/icon-delete.svg" alt="delete icon" />
 			</a>
-			<button class="editBtn" type="submit">SEND</button>
+			<button class="send" type="submit">SEND</button>
 		</div>
 
 		<%- include("../partials/footer.ejs") %>

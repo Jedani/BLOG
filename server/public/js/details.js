@@ -1,4 +1,4 @@
-const send = document.querySelector("send");
+const send = document.querySelector(".send");
 const trash = document.querySelector(".delete");
 const edit = document.querySelector(".edit");
 
@@ -18,8 +18,13 @@ trash.addEventListener("click", (e) => {
 });
 
 edit.addEventListener("click", () => {
-	let text = document.querySelector(".content");
-	text.setAttribute("contenteditable", "true");
+	let text = document.querySelector("#title");
+	let text2 = document.querySelector("#blog");
+
+	if (text) {
+		text.setAttribute("contenteditable", "true");
+		text2.setAttribute("contenteditable", "true");
+	}
 });
 
 send.addEventListener("click", (e) => {
