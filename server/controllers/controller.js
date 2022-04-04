@@ -1,23 +1,4 @@
 const Post = require("../model/Post");
-const Joi = require("joi");
-
-// DATA VALIDATION
-const schema = Joi.object({
-	email: Joi.string().email({
-		minDomainSegments: 2,
-		tlds: { allow: ["com", "net"] },
-	}),
-	password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
-});
-
-const login = (req, res) => {
-	res.render("credentials/login", { title: "login page" });
-};
-
-const signUp = async (req, res) => {
-	Joi.validate(req.body, schema);
-	res.render("credentials/signup", { title: "signup page" });
-};
 
 const getAllBlogs = async (req, res) => {
 	try {
@@ -90,6 +71,4 @@ module.exports = {
 	deleteId,
 	about_page,
 	updateId,
-	login,
-	signUp,
 };
