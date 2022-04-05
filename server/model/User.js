@@ -10,13 +10,23 @@ class User {
 
 	save() {
 		let sql = `
-        INSERT INTO users(blog_id, blog, snippet, title)
-                     VALUES (${1},
-						'${this.blog}',
-						'${this.snippet}', 
-                        '${this.title}'
+        INSERT INTO users(username, country, email, pass)
+                     VALUES (
+						'${this.username}',
+						'${this.country}', 
+                        '${this.email}',
+                        '${this.pass}'
 						)`;
 
 		return db.execute(sql);
 	}
+
+	static findEmail() {
+		let sql = `SELECT email FROM users
+		 WHERE NOT EXISTS ( SELECT email FROM users WHERE email = '${this.email}');`;
+
+		return db.execute(sql);
+	}
 }
+
+module.exports = User;

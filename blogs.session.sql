@@ -8,12 +8,12 @@ USE blog_data;
 DROP TABLE IF EXISTS users;
 --@block
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     username VARCHAR(255) UNIQUE NOT NULL,
     country VARCHAR(255),
     created_at DATETIME DEFAULT NOW(),
     email VARCHAR(255) NOT NULL UNIQUE,
-    pass VARCHAR(20)
+    pass VARCHAR(255)
 );
 --@block
 DROP TABLE IF EXISTS blogs;

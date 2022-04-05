@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", routes, auth);
 
 app.use((req, res) => {
-	res.status(404).render("site_defaults/404");
+	res.status(404).render("site_defaults/404", { title: "error page" });
 });
 
 app.listen(PORT, (err) => {
