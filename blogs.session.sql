@@ -26,7 +26,8 @@ CREATE TABLE blogs(
     time_created DATETIME DEFAULT NOW(),
     blog_id INT NOT NULL,
     FOREIGN KEY(blog_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
-) --@block
+);
+--@block
 INSERT INTO users(username, country, email, pass)
 VALUES(
         -- 'allan sich',

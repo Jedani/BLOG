@@ -21,9 +21,8 @@ class User {
 		return db.execute(sql);
 	}
 
-	static findEmail() {
-		let sql = `SELECT email FROM users
-		 WHERE NOT EXISTS ( SELECT email FROM users WHERE email = '${this.email}');`;
+	static findOne(email) {
+		let sql = `SELECT email, pass, id FROM users WHERE email = '${email}'`;
 
 		return db.execute(sql);
 	}

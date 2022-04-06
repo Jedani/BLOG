@@ -13,10 +13,10 @@ const signUpValidation = (data) => {
 };
 
 const loginValidation = (data) => {
-	const schema = {
+	const schema = Joi.object({
 		email: Joi.string().min(6).required().email(),
 		pass: Joi.string().min(6).required(),
-	};
+	});
 
 	return schema.validate(data);
 };
