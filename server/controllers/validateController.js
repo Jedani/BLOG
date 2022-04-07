@@ -38,7 +38,6 @@ const signUp = async (req, res) => {
 		const user = newUser[0];
 		const token = createToken(user.insertId);
 		res.cookie("jwt", token, { httpOnly: true, maxAge: duration * 1000 });
-		res.json({ user: user.insertId });
 		// res.redirect("/");
 	} catch (error) {
 		res.send("username is taken");
@@ -64,10 +63,20 @@ const logged = async (req, res) => {
 	const validPass = await bcrypt.compare(req.body.pass, password.pass);
 	if (!validPass) return res.send("invalid password");
 
-	// JWT TOKENS
-	const userid = user[0][0];
-	const token = jwt.sign({ id: userid.id }, process.env.TOKEN_SECRET);
-	res.header("auth-token", token);
+	// logging in
+	try {
+		const userid = user[0][0].id;
+		const token = createToken(userid);
+		res.cookie("jwt", token, { httpOnly: true, maxAge: duration * 1000 });
+		res.redirect("/");
+	} catch (error) {
+		res.json({ error });
+	}
+};
+
+const logout = (req, res) => {
+	res.cookie("jwt", "", { maxAge: 1 });
+	res.redirect("/login");
 };
 
 module.exports = {
@@ -75,4 +84,5 @@ module.exports = {
 	login,
 	createUser,
 	logged,
+	logout,
 };

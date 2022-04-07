@@ -1,21 +1,27 @@
-const express = require("express");
+const router = require("express").Router();
+const home = require("../controllers/homeController");
 const blogController = require("../controllers/controller");
-const verify = require("./verifyToken");
+const { authenticate, checkuser } = require("../middleware/verifyToken");
 
-const router = express.Router();
+// to check if user has permission
+router.get("*", checkuser);
 
+// for all requests to be redirected
 router.get("/", (req, res) => {
-	res.redirect("/blogs");
+	res.redirect("/homepage");
 });
-router.get("/blogs", verify, blogController.getAllBlogs);
-router.get("/blogs/create", verify, blogController.create_page);
-router.get("/blogs/about", verify, blogController.about_page);
 
-router.post("/blogs", verify, blogController.postBlog);
+// get request handlers
+router.get("/homepage", home.homepage);
+router.get("/blogs", authenticate, blogController.getAllBlogs);
+router.get("/blogs/create", authenticate, blogController.create_page);
+router.get("/blogs/about", authenticate, blogController.about_page);
 
-router.get("/blogs/:id", verify, blogController.getById);
-router.delete("/blogs/:id", verify, blogController.deleteId);
+router.post("/blogs", authenticate, blogController.postBlog);
 
-router.put("/blogs/:id", verify, blogController.updateId);
+router.get("/blogs/:id", authenticate, blogController.getById);
+router.delete("/blogs/:id", authenticate, blogController.deleteId);
+
+router.put("/blogs/:id", authenticate, blogController.updateId);
 
 module.exports = router;

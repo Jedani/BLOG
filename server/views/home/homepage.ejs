@@ -1,0 +1,68 @@
+<html lang="en">
+	<head>
+		<%- include("../partials/head.ejs") %>
+		<link rel="stylesheet" href="/css/homepage.css" />
+		<script src="/js/navComponent/nav.js" defer></script>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+		></script>
+		<script
+			nomodule=""
+			src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"
+		></script>
+	</head>
+
+	<body>
+		<div class="nav-separator"></div>
+		<nav class="navigation">
+			<ul>
+				<li class="list active">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="home"></ion-icon>
+						</span>
+						<span class="text">Home</span>
+					</a>
+				</li>
+
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="contact"></ion-icon>
+						</span>
+						<span class="text">profile</span>
+					</a>
+				</li>
+
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="mail"></ion-icon>
+						</span>
+						<span class="text">contact</span>
+					</a>
+				</li>
+
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="clipboard"></ion-icon>
+						</span>
+						<span class="text">projects</span>
+					</a>
+				</li>
+
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="cog"></ion-icon>
+						</span>
+						<span class="text">settings</span>
+					</a>
+				</li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
+	</body>
+</html>
